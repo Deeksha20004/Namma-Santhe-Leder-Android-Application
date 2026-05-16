@@ -28,7 +28,18 @@ private val LightColors = lightColorScheme(
 
 private val DarkColors = darkColorScheme(
     primary = PrimaryOrange,
-    secondary = PrimaryOrangeLight
+    onPrimary = Color.White,
+    primaryContainer = Color(0xFF45271D), // Dark brownish orange
+    onPrimaryContainer = PrimaryOrangeLight,
+    secondary = PrimaryOrangeLight,
+    onSecondary = Color.Black,
+    background = Color(0xFF121212), // Material Dark Background
+    onBackground = Color(0xFFE6E1E5), // Light text
+    surface = Color(0xFF1C1B1F),
+    onSurface = Color(0xFFE6E1E5),
+    surfaceVariant = Color(0xFF49454F),
+    onSurfaceVariant = Color(0xFFCAC4D0),
+    error = Color(0xFFF2B8B5)
 )
 
 @Composable
@@ -41,8 +52,12 @@ fun NammaSantheTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = BackgroundCream.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
+            window.statusBarColor = colorScheme.background.toArgb()
+            window.navigationBarColor = colorScheme.background.toArgb()
+            
+            val insetsController = WindowCompat.getInsetsController(window, view)
+            insetsController.isAppearanceLightStatusBars = !darkTheme
+            insetsController.isAppearanceLightNavigationBars = !darkTheme
         }
     }
     MaterialTheme(

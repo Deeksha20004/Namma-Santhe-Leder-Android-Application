@@ -86,4 +86,5 @@
     <string name="sms_permission_denied">SMS மறுக்கப்பட்டது – WhatsApp பின்வாங்கல் பயன்படுத்தப்படும்</string>
     <string name="could_not_add_customer">வாடிக்கையாளரைச் சேர்க்க முடியவில்லை</string>
     <string name="amount_rupees">₹%1$d</string>
+    <string name="whatsapp_reminder_template">வணக்கம் %1$s, %2$s இல் உங்கள் நிலுவைத் தொகை ₹%3$d. தயவுசெய்து விரைவில் செலுத்தவும். - %4$s</string>
 </resources>

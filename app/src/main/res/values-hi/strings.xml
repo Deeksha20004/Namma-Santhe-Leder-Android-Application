@@ -86,4 +86,5 @@
     <string name="sms_permission_denied">SMS अस्वीकृत – WhatsApp विकल्प उपयोग होगा</string>
     <string name="could_not_add_customer">ग्राहक जोड़ नहीं सके</string>
     <string name="amount_rupees">₹%1$d</string>
+    <string name="whatsapp_reminder_template">नमस्ते %1$s, आपका %2$s से ₹%3$d बकाया है। कृपया जल्द चुकता करें। - %4$s</string>
 </resources>

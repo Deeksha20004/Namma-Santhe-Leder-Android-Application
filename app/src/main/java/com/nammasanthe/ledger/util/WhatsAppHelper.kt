@@ -3,6 +3,7 @@ package com.nammasanthe.ledger.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import com.nammasanthe.ledger.R
 import java.net.URLEncoder
 
 object WhatsAppHelper {
@@ -14,8 +15,8 @@ object WhatsAppHelper {
         vendorName: String,
         shopName: String
     ) {
-        val shopPart = if (shopName.isNotBlank()) " ($shopName)" else ""
-        val message = "नमस्ते $customerName, आपका $vendorName$shopPart से ₹$amount बकाया है। कृपया जल्द चुकता करें। - Namma Santhe"
+        val businessName = shopName.ifBlank { vendorName }
+        val message = context.getString(R.string.whatsapp_reminder_template, customerName, businessName, amount, vendorName)
         val encoded = URLEncoder.encode(message, "UTF-8")
         val digits = phone.filter { it.isDigit() }
         val uri = Uri.parse("https://wa.me/$digits?text=$encoded")

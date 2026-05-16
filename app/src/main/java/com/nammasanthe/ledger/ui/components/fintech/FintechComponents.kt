@@ -4,6 +4,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
@@ -68,7 +69,7 @@ fun FintechScreenBackground(modifier: Modifier = Modifier, content: @Composable 
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(BackgroundCream)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         content()
     }
@@ -90,13 +91,14 @@ fun HomeWelcomeHeader(
             Text(
                 text = welcomeText,
                 style = MaterialTheme.typography.bodyMedium,
-                color = TextSecondary
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(Modifier.height(4.dp))
             Text(
                 text = businessName.ifBlank { "—" },
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -104,7 +106,7 @@ fun HomeWelcomeHeader(
         Surface(
             onClick = onSettingsClick,
             shape = CircleShape,
-            color = SurfaceWhite,
+            color = MaterialTheme.colorScheme.surface,
             shadowElevation = 4.dp,
             modifier = Modifier.size(44.dp)
         ) {
@@ -191,9 +193,9 @@ fun StatMiniCard(
                 }
             }
             Spacer(Modifier.height(12.dp))
-            Text(title, style = MaterialTheme.typography.labelMedium, color = TextSecondary)
+            Text(title, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(Modifier.height(4.dp))
-            Text(amount, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+            Text(amount, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface)
         }
     }
 }
@@ -219,7 +221,7 @@ fun FintechTransactionRow(
             .clickable(onClick = onClick)
             .shadow(2.dp, RoundedCornerShape(20.dp), ambientColor = Color.Black.copy(0.04f)),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = SurfaceWhite)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Row(
             Modifier
@@ -233,10 +235,12 @@ fun FintechTransactionRow(
                 Text(
                     customerName,
                     style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Text(dateLabel, style = MaterialTheme.typography.bodySmall, color = TextSecondary)
+                Text(dateLabel, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 trailing?.invoke()
             }
             Column(horizontalAlignment = Alignment.End) {
@@ -250,7 +254,7 @@ fun FintechTransactionRow(
             Icon(
                 Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
-                tint = TextSecondary,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 4.dp)
             )
         }
@@ -301,7 +305,7 @@ fun CustomerListCard(
             .clickable(onClick = onClick)
             .shadow(2.dp, RoundedCornerShape(20.dp)),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = SurfaceWhite)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Row(
             Modifier.fillMaxWidth().padding(14.dp),
@@ -310,7 +314,7 @@ fun CustomerListCard(
             CustomerAvatar(name)
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text(name, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(name, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 if (hasPhone) {
                     Text("•", style = MaterialTheme.typography.labelSmall, color = PaidGreen)
                 }
@@ -321,7 +325,7 @@ fun CustomerListCard(
                 color = balanceColor,
                 fontWeight = FontWeight.SemiBold
             )
-            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = TextSecondary, modifier = Modifier.padding(start = 4.dp))
+            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 4.dp))
         }
     }
 }
@@ -336,26 +340,28 @@ fun FintechSearchField(
     Surface(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(Dimens.chipRadius),
-        color = SurfaceWhite,
+        color = MaterialTheme.colorScheme.surface,
         shadowElevation = 2.dp
     ) {
         Row(
             Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(Icons.Default.Search, null, tint = TextSecondary)
+            Icon(Icons.Default.Search, null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(Modifier.width(8.dp))
             androidx.compose.material3.TextField(
                 value = value,
                 onValueChange = onValueChange,
-                placeholder = { Text(placeholder, color = TextSecondary) },
+                placeholder = { Text(placeholder, color = MaterialTheme.colorScheme.onSurfaceVariant) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
                 colors = androidx.compose.material3.TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
                     unfocusedContainerColor = Color.Transparent,
                     focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
+                    unfocusedIndicatorColor = Color.Transparent,
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface
                 )
             )
         }
@@ -418,9 +424,12 @@ fun FintechBottomBar(
     tabLabel: @Composable (String) -> String,
     modifier: Modifier = Modifier
 ) {
+    val containerColor = if (isSystemInDarkTheme()) Color(0xFF1C1B1F) else Color.White
+    val selectedBg = if (isSystemInDarkTheme()) Color(0xFF45271D) else NavPillSelected
+
     Surface(
         modifier = modifier.fillMaxWidth(),
-        color = NavBarBackground,
+        color = containerColor,
         shadowElevation = 16.dp,
         tonalElevation = 0.dp
     ) {
@@ -438,21 +447,21 @@ fun FintechBottomBar(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .clip(RoundedCornerShape(20.dp))
-                        .background(if (selected) NavPillSelected else Color.Transparent)
+                        .background(if (selected) selectedBg else Color.Transparent)
                         .clickable { onTabSelected(route) }
                         .padding(horizontal = 12.dp, vertical = 8.dp)
                 ) {
                     Icon(
                         icon,
                         contentDescription = label,
-                        tint = if (selected) PrimaryOrange else TextSecondary,
+                        tint = if (selected) PrimaryOrange else MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(24.dp)
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
                         label,
                         style = MaterialTheme.typography.labelSmall,
-                        color = if (selected) PrimaryOrange else TextSecondary,
+                        color = if (selected) PrimaryOrange else MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 1
                     )
                 }
@@ -467,6 +476,7 @@ fun SectionTitle(title: String, modifier: Modifier = Modifier) {
         title,
         style = MaterialTheme.typography.titleLarge,
         fontWeight = FontWeight.SemiBold,
+        color = MaterialTheme.colorScheme.onBackground,
         modifier = modifier.padding(bottom = 12.dp)
     )
 }
@@ -481,7 +491,7 @@ fun SettingsCard(
             .fillMaxWidth()
             .shadow(2.dp, RoundedCornerShape(20.dp)),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = SurfaceWhite)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Column(Modifier.padding(4.dp)) { content() }
     }
@@ -511,12 +521,12 @@ fun SettingsRow(
             Spacer(Modifier.width(14.dp))
         }
         Column(Modifier.weight(1f)) {
-            Text(title, style = MaterialTheme.typography.titleMedium)
+            Text(title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
             if (subtitle != null) {
-                Text(subtitle, style = MaterialTheme.typography.bodySmall, color = TextSecondary)
+                Text(subtitle, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
-        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = TextSecondary)
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 
@@ -528,6 +538,6 @@ fun EmptyStateMessage(message: String, modifier: Modifier = Modifier) {
             .padding(32.dp),
         contentAlignment = Alignment.Center
     ) {
-        Text(message, style = MaterialTheme.typography.bodyLarge, color = TextSecondary)
+        Text(message, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }

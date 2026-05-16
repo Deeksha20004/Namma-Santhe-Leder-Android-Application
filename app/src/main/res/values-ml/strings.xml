@@ -86,4 +86,5 @@
     <string name="sms_permission_denied">SMS നിരസിച്ചു – WhatsApp ബാക്കപ്പ് ഉപയോഗിക്കും</string>
     <string name="could_not_add_customer">ഉപഭോക്താവിനെ ചേർക്കാനായില്ല</string>
     <string name="amount_rupees">₹%1$d</string>
+    <string name="whatsapp_reminder_template">നമസ്കാരം %1$s, %2$s-ൽ നിങ്ങളുടെ ബാക്കി തുക ₹%3$d ആണ്. ദയവായി വേഗത്തിൽ തിരിച്ചടയ്ക്കുക. - %4$s</string>
 </resources>

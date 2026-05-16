@@ -88,4 +88,5 @@
     <string name="sms_permission_denied">SMS ನಿರಾಕರಿಸಲಾಗಿದೆ – WhatsApp ಬ್ಯಾಕಪ್ ಬಳಸಲಾಗುತ್ತದೆ</string>
     <string name="could_not_add_customer">ಗ್ರಾಹಕರನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
     <string name="amount_rupees">₹%1$d</string>
+    <string name="whatsapp_reminder_template">ನಮಸ್ಕಾರ %1$s, %2$s ನಲ್ಲಿ ನಿಮ್ಮ ಬಾಕಿ ಮೊತ್ತ ₹%3$d ಆಗಿದೆ. ದಯವಿಟ್ಟು ಶೀಘ್ರವಾಗಿ ಪಾವತಿಸಿ. - %4$s</string>
 </resources>
