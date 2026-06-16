@@ -1,10 +1,10 @@
-# Namma-Santhe Ledger (ನಮ್ಮ ಸಂತೆ ಲೆಡ್ಜರ್) 📱💼
+# Namma-Santhe Ledger (ನಮ್ಮ ಸಂತೆ ಲೆಡ್ಜರ್)
 
 A standalone, offline-first native Android application designed to digitize and simplify traditional credit tracking and transaction management for small marketplace vendors and micro-merchants.
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 In busy open-air weekly markets (*santhes*), bookkeeping is historically managed using fragile physical paper logs (*khatas*). These paper records are highly vulnerable to ink fading, water damage, page tearing, or total misplacement. 
 
@@ -12,7 +12,7 @@ In busy open-air weekly markets (*santhes*), bookkeeping is historically managed
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 * **Offline-First Architecture:** Records, updates, and audits transactions completely on-device. Works 100% without an internet connection, ensuring reliability in remote market areas.
 * **Automated Collection Reminders:** Uses a smart background system that tracks outstanding dues and pushes localized reminder alerts to optimize merchant recovery cycles.
@@ -32,7 +32,7 @@ In busy open-air weekly markets (*santhes*), bookkeeping is historically managed
 
 ---
 
-## 📂 Project Architecture
+## Project Architecture
 
 The project follows clean architecture principles using the **MVVM** layout structure:
 
@@ -42,7 +42,7 @@ The project follows clean architecture principles using the **MVVM** layout stru
 
 ---
 
-## 🚀 How It Works Under the Hood
+## How It Works Under the Hood
 
 1. **The Core File:** Room DB saves all your data rows securely inside a single, protected SQLite database file located in the app's sandboxed internal storage directory.
 2. **The Safety Lock:** When entries are modified, changes are logged to a temporary Write-Ahead Log (`.db-wal`) first, preventing data corruption if the phone suddenly loses battery power.
@@ -50,7 +50,7 @@ The project follows clean architecture principles using the **MVVM** layout stru
 
 ---
 
-## 📜 License & Copyright
+## License & Copyright
 
 Copyright © 2026. All rights reserved. 
 
